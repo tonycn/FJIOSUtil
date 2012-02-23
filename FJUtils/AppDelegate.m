@@ -3,7 +3,7 @@
 //  FJUtils
 //
 //  Created by Jianjun Wu on 2/17/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Fourj. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -19,17 +19,21 @@
 {
   [_window release];
   [_viewController release];
-    [super dealloc];
+  [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
+  self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+  // Override point for customization after application launch.
   self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-  self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
-    return YES;
+  
+  
+  UINavigationController *rootNav = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+  self.window.rootViewController = rootNav;
+  [rootNav release];
+  [self.window makeKeyAndVisible];
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
